@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Donation;
 use App\Form\DonationForm;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -58,5 +59,35 @@ class IndexController extends AbstractController
     public function dashboard()
     {
         return $this->render('dashboard.html.twig');
+    }
+
+    /**
+     * @Route("/dashboard-data", name="dashboard-data")
+     * @return JsonResponse
+     */
+    public function getStats()
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $repository = $entityManager->getRepository(Donation::class);
+
+        $data = ['items' => [], 'total' => 0];
+        $items = $repository->findAll();
+
+        /** @var Donation $item */
+        foreach ($items as $item) {
+            $key = $item->getCreatedAt()->format('Y-m-d');
+
+            if (!isset($data['items'][$key])) {
+                $data['items'][$key] = 0;
+            }
+
+            $data['items'][$key] += $item->getAmount();
+            $data['total'] += $item->getAmount();
+        }
+
+        $data['max_donor'] = $repository->getMaxDonor();
+        $data['month'] = $repository->getMonthMount();
+
+        return new JsonResponse($data);
     }
 }

@@ -1,30 +1,5 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-6">
-            <div class="tile">
-                <h3 class="tile-title">Monthly Sales</h3>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <canvas class="embed-responsive-item"
-                            id="lineChartDemo"
-                            width="753"
-                            height="423"
-                            style="width: 753px; height: 423px;"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="tile">
-                <h3 class="tile-title">Support Requests</h3>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <canvas class="embed-responsive-item"
-                            id="pieChartDemo"
-                            width="753"
-                            height="423"
-                            style="width: 753px; height: 423px;"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+    <dashboard></dashboard>
 {% endblock %}
