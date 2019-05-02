@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="/dist/style.css">
+</head>
+<body>
+<body class="app sidebar-mini rtl  pace-done">
+<div class="pace  pace-inactive">
+    <div class="pace-progress"
+            data-progress-text="100%"
+            data-progress="99"
+            style="transform: translate3d(100%, 0px, 0px);">
+        <div class="pace-progress-inner"></div>
+    </div>
+    <div class="pace-activity"></div>
+</div>
+<!-- Navbar-->
+<header class="app-header"><a class="app-header__logo" href="/">Test</a>
+    <!-- Sidebar toggle button--><a class="app-sidebar__toggle"
+            href="#"
+            data-toggle="sidebar"
+            aria-label="Hide Sidebar"></a>
+</header>
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+    <ul class="app-menu">
+        <li>
+            <a class="app-menu__item" href="{{ path('dashboard') }}"><i class="app-menu__icon fa fa-dashboard"></i><span
+                        class="app-menu__label">Dashboard</span></a>
+        </li>
+
+    </ul>
+</aside>
+<main class="app-content">
+    <div id="app">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+</main>
+</body>
+
+{% block javascripts %}{% endblock %}
+<script type="text/javascript" src="/dist/index.js">
+</script>
+</body>
 </html>

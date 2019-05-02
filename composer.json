@@ -66,6 +66,11 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "dev-db-setup": [
+            "php bin/console doctrine:database:drop --if-exists --no-interaction --force --quiet",
+            "php bin/console doctrine:database:create --if-not-exists --no-interaction --quiet",
+            "php bin/console doctrine:schema:create --no-interaction --quiet"
         ]
     },
     "conflict": {

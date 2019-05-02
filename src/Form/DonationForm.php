@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Donation;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class DonationForm extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('name', TextType::class, [
+//                'label' => 'csv_import.file_to_import'
+            ])
+            ->add('email', EmailType::class, [
+//                'label' => 'csv_import.file_to_import'
+            ])
+            ->add('amount', IntegerType::class, [
+                'attr' => [
+                    'min' => 1
+                ]
+//                'label' => 'csv_import.file_to_import'
+            ])
+            ->add('message', TextareaType::class, [
+                'required' => false
+//                'label' => 'csv_import.file_to_import'
+            ])
+            ->add('submit', SubmitType::class, [
+//                'label' => 'csv_import.submit'
+            ])
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Donation::class,
+            'label' => false,
+        ]);
+    }
+}
