@@ -26,6 +26,8 @@
         "symfony/yaml": "4.2.*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.1",
+        "fzaninotto/faker": "^1.8",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",
@@ -70,7 +72,8 @@
         "dev-db-setup": [
             "php bin/console doctrine:database:drop --if-exists --no-interaction --force --quiet",
             "php bin/console doctrine:database:create --if-not-exists --no-interaction --quiet",
-            "php bin/console doctrine:schema:create --no-interaction --quiet"
+            "php bin/console doctrine:schema:create --no-interaction --quiet",
+            "php bin/console doctrine:fixtures:load --no-interaction --quiet"
         ]
     },
     "conflict": {

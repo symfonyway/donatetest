@@ -4,8 +4,17 @@ namespace App\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+/**
+ * Class DonationRepository
+ * @package App\Repository
+ */
 class DonationRepository extends EntityRepository
 {
+    /**
+     * @return array
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function getMaxDonor()
     {
         $qb = $this->createQueryBuilder('q');
@@ -19,6 +28,11 @@ class DonationRepository extends EntityRepository
         return $qb->getQuery()->getSingleResult();
     }
 
+    /**
+     * @return array
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function getMonthMount()
     {
         $dataStart = new \DateTime();

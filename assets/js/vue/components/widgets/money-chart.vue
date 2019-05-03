@@ -22,7 +22,7 @@
           labels,
           datasets: [
             {
-              label: 'Money amount',
+              label: 'Money amount ($)',
               data,
             }],
         }, {

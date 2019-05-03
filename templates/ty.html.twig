@@ -1,5 +1,9 @@
 {% extends "base.html.twig" %}
 
+{% block title %}
+    {{ title }}
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <div class="tile mb-4">
@@ -10,7 +14,7 @@
                             <h1 class="display-3 text-center">Thank you for donation!</h1>
                         </div>
                         <p class="text-center">
-                            <a class="btn btn-primary btn-lg" href="/">Back to main</a>
+                            <a class="btn btn-primary btn-lg" href="{{ path('donate_index') }}">Back to main</a>
                         </p>
                     </div>
                 </div>

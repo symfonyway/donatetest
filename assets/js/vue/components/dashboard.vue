@@ -19,6 +19,8 @@
   import MoneyChart from './widgets/money-chart';
   import MonthlyAmount from './widgets/money-amount';
 
+  let fetchDataTimeout = null;
+
   export default {
     name: 'dashboard',
     components: { MoneyChart, MonthlyAmount, BestDonor },
@@ -30,16 +32,27 @@
         total: null,
       };
     },
-    async beforeMount() {
-      const resp = await this.$http.get('/dashboard-data').catch(e => console.log(e));
+    beforeMount() {
+      this.fetchData();
+    },
+    beforeDestroy() {
+      clearTimeout(fetchDataTimeout);
+    },
+    methods: {
+      async fetchData() {
+        const resp = await this.$http.get('/dashboard-data').catch(e => console.log(e));
 
-      if (resp && resp.data) {
-        this.datesItems = resp.data.items;
-        this.maxDonor = resp.data.max_donor;
-        this.total = resp.data.total;
-        this.month = resp.data.month;
-      }
+        if (resp && resp.data) {
+          if (this.total !== resp.data.total) {
+            this.datesItems = resp.data.items;
+            this.maxDonor = resp.data.max_donor;
+            this.total = resp.data.total;
+            this.month = resp.data.month;
+          }
+        }
 
+        fetchDataTimeout = setTimeout(() => this.fetchData(), 2000);
+      },
     },
   };
 </script>

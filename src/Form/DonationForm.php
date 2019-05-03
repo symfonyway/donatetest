@@ -12,30 +12,26 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class DonationForm
+ * @package App\Form
+ */
 class DonationForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
-//                'label' => 'csv_import.file_to_import'
-            ])
-            ->add('email', EmailType::class, [
-//                'label' => 'csv_import.file_to_import'
-            ])
+            ->add('name', TextType::class)
+            ->add('email', EmailType::class)
             ->add('amount', IntegerType::class, [
                 'attr' => [
                     'min' => 1
                 ]
-//                'label' => 'csv_import.file_to_import'
             ])
             ->add('message', TextareaType::class, [
                 'required' => false
-//                'label' => 'csv_import.file_to_import'
             ])
-            ->add('submit', SubmitType::class, [
-//                'label' => 'csv_import.submit'
-            ])
+            ->add('submit', SubmitType::class)
         ;
     }
 

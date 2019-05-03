@@ -16,7 +16,8 @@ mix
   .autoload({
     jquery: ['$', 'window.jQuery', 'jQuery', 'window.$', 'jquery', 'window.jquery'],
     'popper.js/dist/umd/popper.js': ['Popper'],
-  }).js('assets/js/index.js', 'dist')
+  })
+  .js('assets/js/index.js', 'dist')
   .sass('assets/scss/style.scss', 'dist');
 
 if (process.env.NODE_ENV !== 'production') {
