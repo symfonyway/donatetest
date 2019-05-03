@@ -7,4 +7,4 @@
 5) Install vendors with `composer install` [composer](https://getcomposer.org/)
 6) Run `composer dev-db-setup`
 ###Demo
-Now demo available on [localhost](http://localhost)
+Now demo available on [localhost:6543](http://localhost:6543)

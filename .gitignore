@@ -7,6 +7,8 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+db_data/
+
 ###> symfony/phpunit-bridge ###
 .phpunit
 /phpunit.xml
